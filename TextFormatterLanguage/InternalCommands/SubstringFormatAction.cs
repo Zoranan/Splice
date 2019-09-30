@@ -13,14 +13,14 @@ namespace TextFormatterLanguage.InternalCommands
         readonly int _length = -1;
 
         //Constructors
-        public SubstringFormatAction(int s, int l = -1, bool endBasedIndex = false)
+        internal SubstringFormatAction(int s, int l = -1, bool endBasedIndex = false)
         {
             _start = s;
             _length = l;
             _endBasedIndex = endBasedIndex;
         }
 
-        public SubstringFormatAction(string args)
+        internal SubstringFormatAction(string args)
         {
             var parts = args.Split(',');
 
@@ -63,7 +63,7 @@ namespace TextFormatterLanguage.InternalCommands
         }
 
         //Get value
-        public override string GetValue(string input, ref int start)
+        internal override string GetValue(string input, ref int start)
         {
             string sub = "";
             int s;

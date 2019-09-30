@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage.InternalCommands
 {
-    class SubstringRangeFormatAction : FormattingAction
+    internal class SubstringRangeFormatAction : FormattingAction
     {
         readonly bool _endBasedStartIndex = false;
         readonly bool _endBasedEndIndex = false;
         readonly int _start = -1;
         readonly int _end = -1;
 
-        public SubstringRangeFormatAction(string args)
+        internal SubstringRangeFormatAction(string args)
         {
             var parts = args.Split('-');
 
@@ -71,7 +71,7 @@ namespace TextFormatterLanguage.InternalCommands
             }
         }
 
-        public override string GetValue(string input, ref int start)
+        internal override string GetValue(string input, ref int start)
         {
             string sub = "";
             int s;

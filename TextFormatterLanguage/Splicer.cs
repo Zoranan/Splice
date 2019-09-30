@@ -6,19 +6,26 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage
 {
-    public class CompiledFormatter
+    /// <summary>
+    /// A Splicer object contains a series of string formatting commands. Its like Regex, for chopping up strings
+    /// </summary>
+    public class Splicer
     {
-        List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
+        private readonly List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
 
-        #region Contructor Stuff
+        #region Constructor Stuff
         //Constructor
-        public CompiledFormatter(string format)
+        /// <summary>
+        /// Create a new Splicer object with the give splice format string
+        /// </summary>
+        /// <param name="format">The splice string used to generate the formatting commands for this splice object</param>
+        public Splicer(string format)
         {
             ParseFormat(format);
         }
 
         //Parsing
-        public void ParseFormat(string format)
+        internal void ParseFormat(string format)
         {
             StringBuilder currentPart = new StringBuilder();
             bool inCmdBlock = false;
@@ -86,6 +93,11 @@ namespace TextFormatterLanguage
             throw new ArgumentException("Bad command '" + c + " at index " + i + "." + Environment.NewLine + message);
         }
 
+        /// <summary>
+        /// Formats a string with this splice object
+        /// </summary>
+        /// <param name="input">The string to format</param>
+        /// <returns>The spliced string</returns>
         public string Format(string input)
         {
             StringBuilder sb = new StringBuilder();
@@ -96,6 +108,17 @@ namespace TextFormatterLanguage
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Formats a string with the specified splice string
+        /// </summary>
+        /// <param name="splice">The splice string used to perform formatting</param>
+        /// <param name="input">The string to format</param>
+        /// <returns>The spliced string</returns>
+        public static string Format(string splice, string input)
+        {
+            return new Splicer(splice).Format(input);
         }
         
     }
