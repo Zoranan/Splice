@@ -72,6 +72,8 @@ namespace TextFormatterLanguage
                 sb.Append(_formattingActions[i].GetValue(input, ref _currentIndex));
             }
 
+            _currentIndex = 0;
+
             return sb.ToString();
         }
     }
