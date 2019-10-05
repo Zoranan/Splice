@@ -34,13 +34,13 @@ namespace TextFormatterLanguage
                         fa = new SkipCharacterFormatAction(p);
                     }
                     //Character range substring
-                    else if (Regex.IsMatch(p, "(_|e?[0-9]+)-(_|e?[0-9]+)"))
+                    else if (Regex.IsMatch(p, "^(_|[^-]+)-(_|.+)$"))
                     {
                         fa = new SubstringRangeFormatAction(p);
                     }
 
                     //Traditional substring (start, length optionally)
-                    else if (Regex.IsMatch(p, "(_|e?[0-9]+)(,[0-9]+)?"))
+                    else if (Regex.IsMatch(p, "^(_|[^,]+)(,.+)?$"))
                     {
                         fa = new SubstringFormatAction(p);
                     }
