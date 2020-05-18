@@ -10,7 +10,7 @@ namespace TextFormatterLanguage
 {
     class FormatCommandGroup
     {
-        private List<FormattingAction> _formattingActions = new List<FormattingAction>();
+        private readonly List<FormattingAction> _formattingActions = new List<FormattingAction>();
         private int _currentIndex = 0;
 
         internal FormatCommandGroup (string groupString)
