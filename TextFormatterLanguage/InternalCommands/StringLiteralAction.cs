@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage.InternalCommands
 {
-    class StringLiteralAction : FormattingAction
+    internal class StringLiteralAction : FormattingAction
     {
         private string _literal;
 

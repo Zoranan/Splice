@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage.InternalCommands
 {
-    abstract class FormattingAction
+    internal abstract class FormattingAction
     {
         //Gets the specified value, updating the start index if necessary
         internal abstract string GetValue(string input, ref int start);

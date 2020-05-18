@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage.InternalCommands
 {
-    class SubstringRangeFormatAction : FormattingAction
+    internal class SubstringRangeFormatAction : FormattingAction
     {
         readonly bool _endBasedStartIndex = false;
         readonly bool _endBasedEndIndex = false;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage.InternalCommands
 {
-    class SkipCharacterFormatAction : FormattingAction
+    internal class SkipCharacterFormatAction : FormattingAction
     {
         private readonly char _charToSkip;
         private readonly bool _negated;
