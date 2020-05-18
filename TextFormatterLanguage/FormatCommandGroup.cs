@@ -13,9 +13,9 @@ namespace TextFormatterLanguage
         private List<FormattingAction> _formattingActions = new List<FormattingAction>();
         private int _currentIndex = 0;
 
-        public FormatCommandGroup (string groupString)
+        internal FormatCommandGroup (string groupString)
         {
-            //If this is a command, we need to split it and qork out each command separately
+            //If this is a command, we need to split it and work out each command separately
             if (groupString[0] == '[')
             {
                 //Cut the brackets off the ends
@@ -57,13 +57,13 @@ namespace TextFormatterLanguage
             }
         }
 
-        public void AddCommand(FormattingAction fa)
+        internal void AddCommand(FormattingAction fa)
         {
             _formattingActions.Add(fa);
         }
 
         //Get the value of all command block together in this 
-        public string GetValue(string input)
+        internal string GetValue(string input)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -73,6 +73,11 @@ namespace TextFormatterLanguage
             }
 
             return sb.ToString();
+        }
+
+        internal void ResetPosition()
+        {
+            _currentIndex = 0;
         }
     }
 }

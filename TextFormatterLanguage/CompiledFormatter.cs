@@ -8,7 +8,8 @@ namespace TextFormatterLanguage
 {
     public class CompiledFormatter
     {
-        List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
+        private const char ESCAPE_CHAR = '\\';
+        private List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
 
         #region Contructor Stuff
         //Constructor
@@ -22,13 +23,25 @@ namespace TextFormatterLanguage
         {
             StringBuilder currentPart = new StringBuilder();
             bool inCmdBlock = false;
+            bool escaping = false;
 
             for (int i = 0; i < format.Length; i++)
             {
                 var c = format[i];
 
+                if (escaping)
+                {
+                    currentPart.Append(c);
+                    escaping = false;
+                }
+
+                else if (c == ESCAPE_CHAR)
+                {
+                    escaping = true;
+                }
+
                 //Start a new command block
-                if (c == '[')
+                else if (c == '[')
                 {
                     if (!inCmdBlock)
                     {
@@ -66,7 +79,7 @@ namespace TextFormatterLanguage
                     }
                 }
 
-                //Always add the current char
+                //Add the current char if nothing else matched
                 else
                 {
                     currentPart.Append(c);
@@ -92,6 +105,7 @@ namespace TextFormatterLanguage
 
             for (int i = 0; i < _formattingGroups.Count; i++)
             {
+                _formattingGroups[i].ResetPosition();
                 sb.Append(_formattingGroups[i].GetValue(input));
             }
 

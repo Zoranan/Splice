@@ -12,12 +12,12 @@ namespace TextFormatterLanguage.InternalCommands
         private readonly bool _negated;
 
         //Constructors
-        public SkipCharacterFormatAction(char skip)
+        internal SkipCharacterFormatAction(char skip)
         {
             _charToSkip = skip;
         }
 
-        public SkipCharacterFormatAction(string skip)
+        internal SkipCharacterFormatAction(string skip)
         {
             //Make sure the input command for skip is valid!
             //Skip the following character
@@ -38,7 +38,7 @@ namespace TextFormatterLanguage.InternalCommands
         }
 
         //Skip does not return real a value. Instead it updates the start value
-        public override string GetValue(string input, ref int start)
+        internal override string GetValue(string input, ref int start)
         {
             while (start < input.Length && 
                 (input[start] == _charToSkip) != _negated)

@@ -9,7 +9,7 @@ namespace TextFormatterLanguage.InternalCommands
     abstract class FormattingAction
     {
         //Gets the specified value, updating the start index if necessary
-        public abstract string GetValue(string input, ref int start);
+        internal abstract string GetValue(string input, ref int start);
 
         //Calculate an end based index
         protected int ConvertEndBasedIndex(string input, int i)

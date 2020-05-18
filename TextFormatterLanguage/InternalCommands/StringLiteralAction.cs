@@ -10,12 +10,12 @@ namespace TextFormatterLanguage.InternalCommands
     {
         private string _literal;
 
-        public StringLiteralAction(string val)
+        internal StringLiteralAction(string val)
         {
             _literal = val;
         }
 
-        public override string GetValue(string input, ref int start)
+        internal override string GetValue(string input, ref int start)
         {
             return _literal;
         }
