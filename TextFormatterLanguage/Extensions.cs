@@ -19,7 +19,7 @@ namespace TextFormatterLanguage
         /// <returns>The formatted string</returns>
         public static string Splice(this string input, string spliceFormat)
         {
-            return Splicer.Format(spliceFormat, input);
+            return new SpliceFormatter(spliceFormat).Format(input);
         }
     }
 }

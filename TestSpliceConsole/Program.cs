@@ -19,7 +19,7 @@ namespace TestSpliceConsole
                 Console.Write("  Enter splice format: ");
                 var splice = Console.ReadLine();
 
-                Console.WriteLine(Splicer.Format(splice, text));
+                Console.WriteLine(text.Splice(splice));
             }
         }
     }

@@ -6,20 +6,31 @@ using System.Threading.Tasks;
 
 namespace TextFormatterLanguage
 {
-    public class CompiledFormatter
+    /// <summary>
+    /// Represents a series of string formatting commands and literal characters used format an input string
+    /// </summary>
+    public class SpliceFormatter
     {
+        /// <summary>
+        /// The splice formatting string used to create this SpliceFormatter object
+        /// </summary>
+        public readonly string FormatCommand;
+
         private const char ESCAPE_CHAR = '\\';
-        private List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
+        private readonly List<FormatCommandGroup> _formattingGroups = new List<FormatCommandGroup>();
 
         #region Contructor Stuff
-        //Constructor
-        public CompiledFormatter(string format)
+        /// <summary>
+        /// Create a new splice formatter using the specified format string
+        /// </summary>
+        /// <param name="format">The formatting command string</param>
+        public SpliceFormatter(string format)
         {
             ParseFormat(format);
+            FormatCommand = format;
         }
 
-        //Parsing
-        public void ParseFormat(string format)
+        private void ParseFormat(string format)
         {
             StringBuilder currentPart = new StringBuilder();
             bool inCmdBlock = false;
@@ -99,6 +110,11 @@ namespace TextFormatterLanguage
             throw new ArgumentException("Bad command '" + c + " at index " + i + "." + Environment.NewLine + message);
         }
 
+        /// <summary>
+        /// Format the input string, using this SpliceFormatter
+        /// </summary>
+        /// <param name="input">The string to format</param>
+        /// <returns>The formatted string</returns>
         public string Format(string input)
         {
             StringBuilder sb = new StringBuilder();

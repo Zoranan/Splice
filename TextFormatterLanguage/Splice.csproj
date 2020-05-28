@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="Splicer.cs" />
+    <Compile Include="SpliceFormatter.cs" />
     <Compile Include="FormatCommandGroup.cs" />
     <Compile Include="InternalCommands\SkipCharacterFormatAction.cs" />
     <Compile Include="InternalCommands\FormattingAction.cs" />
